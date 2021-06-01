@@ -19,10 +19,11 @@ const newQuote=()=>{
     const quote=apiQuotes[Math.floor(Math.random()*apiQuotes.length)]
     console.log(quote);
     quote.text.length>50?quoteText.classList.add('long-quote'):quoteText.classList.remove('long-quote');
+    
     quoteText.textContent=quote.text;
     
-    authorText.textContent=quote.author??'Anonymous'; 
-    complete();
+    authorText.textContent=quote.author??'Anonymous';
+complete();
 
 }
 
@@ -30,10 +31,15 @@ async function getQuotes(){
     try{
     const response=await fetch('https://type.fit/api/quotes');
     apiQuotes=await response.json();
-      newQuote();
+    
+        newQuote();
+    
+    
+    
 }
     catch(error){console.log(error)}
 }
+loading();
 getQuotes();
 
 const tweetQuote=()=>{
